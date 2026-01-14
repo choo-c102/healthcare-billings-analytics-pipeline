@@ -1,0 +1,13 @@
+name: billings-PostgreSQL
+
+services:
+    postgres:
+        image: postgres:18.1-alpine3.23
+        container_name: billings_db
+        restart: always
+        environment: 
+            POSTGRES_USER: student_cheryl
+            POSTGRES_PASSWORD: 2025cheryl
+            POSTGRES_DB: billings
+        ports: 
+            - "5432:5432"
