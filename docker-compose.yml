@@ -6,8 +6,23 @@ services:
         container_name: billings_db
         restart: always
         environment: 
-            POSTGRES_USER: student_cheryl
-            POSTGRES_PASSWORD: 2025cheryl
+            POSTGRES_USER: choo-c102
+            POSTGRES_PASSWORD: choo-c102-password123
             POSTGRES_DB: billings
         ports: 
             - "5432:5432"
+        volumes:
+            - ./data/split_data:/data
+
+    pgadmin:
+        image: dpage/pgadmin4:latest
+        container_name: pgadmin
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: cherylchoo102@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: choo-c102-password123
+        ports:
+            - "5050:80"
+        depends_on:
+            - postgres
+

@@ -1,0 +1,14 @@
+To do:
+- Set up pgadmin [DONE]
+- Create volume and sync data folder to local machine to container [DONE]
+- Create tables and their relations 
+- Load CSV into tables
+- Create a business problem and write queries
+- Export query outputs to PowerBI
+- Create PowerBI presentation
+- Add new role to pgadmin to allow viewers. Currently admin has already been added with my credentials
+- Check security weak points
+- Create setup and environment files if properly required
+- Clean up folder to commit to git
+- Write up a good README.md
+- Push to GitHub
