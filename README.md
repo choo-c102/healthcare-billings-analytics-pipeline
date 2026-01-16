@@ -1,7 +1,10 @@
 To do:
 - Set up pgadmin [DONE]
 - Create volume and sync data folder to local machine to container [DONE]
-- Create tables and their relations 
+- Change insurance_id to payer_id [DONE]
+- Change is_emergency to Boolean instead of Yes/No [DONE]
+- Create tables and their relations [DONE]
+- Create constraints
 - Load CSV into tables
 - Create a business problem and write queries
 - Export query outputs to PowerBI
