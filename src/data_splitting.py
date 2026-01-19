@@ -21,12 +21,14 @@ def process_and_split_data():
     print("Loading raw data...")
     df = pd.read_csv(input_file)
 
-    # Clean and transform data    
-    # Rename column
-    df = df.rename(columns={'insurance_id': 'payer_id'})
-    
-    # Convert NULLs for payer_id column to set 'INS_NULL'
-    df['payer_id'] = df['payer_id'].fillna('INS_NULL')
+    # Clean and transform data      
+    # Convert NULLs for insurance_id column to set 'INS_NULL'
+    df['insurance_id'] = df['insurance_id'].fillna('INS_NULL')
+
+    # Identify and resolve inregistered insurance_id
+    mask = (df['insurance_id'] == 'INS_NULL') & (df['payer_name'] != 'Self-pay')
+    no_reg_ids = [f'INS-NOREG{i+1}' for i in range(mask.sum())]
+    df.loc[mask, 'insurance_id'] = no_reg_ids
     
     # Convert Yes/No to Boolean
     bool_map = {'Yes': True, 'No': False}
@@ -34,11 +36,12 @@ def process_and_split_data():
 
     #Define tables 
     tables = {
-        'patients': df[['patient_id', 'age', 'gender']],
-        'payers': df[['payer_id', 'payer_name', 'payer_type']],
-        'doctors': df[['physician_id', 'department']],
+        'patients': df[['patient_id', 'age', 'gender']].drop_duplicates(),
+        'payers': df[['insurance_id', 'payer_name', 'payer_type']].drop_duplicates(),
+        'doctors': df[['physician_id', 'department']].drop_duplicates(),
+        'doctor_specialties': df[['physician_id', 'department']].drop_duplicates(),
         'appointments': df[['appointment_id', 'patient_id', 'physician_id', 'visit_date', 'visit_type', 'is_emergency', 'visit_reason', 'diagnosis']],
-        'billings': df[['appointment_id', 'payer_id', 'admission_date', 'discharge_date', 'charge_amount_USD', 'claim_status', 'payment_amount_USD']]
+        'billings': df[['appointment_id', 'insurance_id', 'admission_date', 'discharge_date', 'charge_amount_USD', 'claim_status', 'payment_amount_USD']]
     }
 
     # Save outputs
