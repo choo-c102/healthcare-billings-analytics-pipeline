@@ -34,43 +34,46 @@ docker-compose.yml: Orchestration for the PostgreSQL and pgAdmin environment.
 1. Environment Initialization
 First, clone the repository and set up your Python virtual environment to manage dependencies.
 
-Bash
-
+```sh
 # Create the virtual environment
 python -m venv .venv
 
 # Activate the environment
-# On Windows:
+#On Windows
 .venv\Scripts\activate
-# On Mac/Linux:
-source .venv/bin/activate
+#On Linux
+.venv/bin/activate 
 
 # Install required libraries
 pip install -r requirements.txt
+```
+
 2. Secret Management
 Before running the database, create a .env file in the root directory to store your credentials. You can use .env.example as a template.
 
-Bash
-
+```sh
 cp .env.example .env
+```
+
 # Edit .env with your preferred database credentials
 🛠️ Data Pipeline
 Step 1: Data Splitting & Cleaning
 The raw data is normalized into five tables: patients, payers, doctors, appointments, and billings.
 
 Run the automated script:
-
-Bash
-
+```sh
 python src/data_splitting.py
-💡 Note for Reviewers: If you prefer a guided, cell-by-cell explanation of the data cleaning logic (including boolean mapping and null handling), please refer to notebooks/data_exploration.ipynb. The .py script is the production version of that notebook.
+```
+
+💡 Note: If you prefer a guided, cell-by-cell explanation of the data cleaning logic (including boolean mapping and null handling), please refer to notebooks/data_exploration.ipynb. The .py script is the production version of that notebook.
 
 Step 2: Database Deployment
 Launch the PostgreSQL database and pgAdmin interface using Docker:
 
-Bash
-
+```sh
 docker-compose up -d
+```
+
 Step 3: Loading Data
 Once the containers are running, you can import the generated CSVs into the PostgreSQL tables using the COPY command via the terminal or pgAdmin.
 
