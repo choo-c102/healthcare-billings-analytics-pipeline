@@ -8,11 +8,11 @@ PROJECT PROGRESS:
 
 ## Healthcare Billings Analytics: Data Engineering & RDS Setup
 
-This is an on-going project that demonstrates a complete data analytics pipeline used in an in-depth study into hospital 'bad debt'. The report from that study can be found [here]([url](https://www.academia.edu/146226032/Uncovering_Root_Causes_in_Hospital_Billing_to_Strengthen_Revenue_Cycle_Systems?source=swp_share)).
+This is an on-going project that demonstrates a complete data analytics pipeline used in an in-depth study into hospital 'bad debt'. The report from that study can be found [here](https://www.academia.edu/146226032/Uncovering_Root_Causes_in_Hospital_Billing_to_Strengthen_Revenue_Cycle_Systems?source=swp_share).
 
 The repo hosts the steps taken to generate the final interactive Power BI insights (previously hosted on SAP Lumira Discovery), from raw healthcare dataset ETL using Python, deploying a normalized Relational Database Service (RDS) using Docker and PostgreSQL, to SQL queries for exploration and connecting Postgres to PowerBI. 
 
-The repo structure is set up so that the whole project can be replicated. The dataset used in this project was synthetically generated and available for download on Kaggle [here]([url](https://www.kaggle.com/datasets/ayaasaad/synthetic-hospital-visits-and-billing-records)).
+The repo structure is set up so that the whole project can be replicated. The dataset used in this project was synthetically generated and available for download on Kaggle [here](https://www.kaggle.com/datasets/ayaasaad/synthetic-hospital-visits-and-billing-records).
 
 ### Project goals
 - Data Engineering: Designing a robust ETL pipeline that handles "messy" real-world healthcare data.
